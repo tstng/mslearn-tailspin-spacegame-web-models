@@ -4,6 +4,9 @@ pool:
 variables:
   buildConfiguration: 'Release'
   dotnetSdkVersion: '3.1.100'
+  Major: '1'
+  Minor: '0'
+  Patch: '0'
 
 steps:
 - task: UseDotNet@2
@@ -31,9 +34,9 @@ steps:
     projects: '**/*.csproj'
     arguments: '--no-build --configuration $(buildConfiguration)'
     versioningScheme: byPrereleaseNumber
-    majorVersion: '1'
-    minorVersion: '0'
-    patchVersion: '0'
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
  
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
